@@ -122,7 +122,12 @@ const loadNewsDetail = async(id) => {
     const url = `https://news-api-fs.vercel.app/api/news/${id}`;
     const res = await fetch(url);
     const data = await res.json();
-    showNewsDetail(data.article);
+    if(data.success){
+        showNewsDetail(data.article);
+    }
+    else{
+        alert("খবরের বিস্তারিত লোড করতে ব্যর্থ");
+    }
 }
 
 const showNewsDetail = (news) => {
@@ -132,10 +137,10 @@ const showNewsDetail = (news) => {
     newsDetail.innerHTML = "";
     newsDetail.innerHTML += `
         ${news.images.length !== 0 ? `<img src="${news.images[0].url}" alt="" class="mx-auto">` : ''}
-        <h2 class="font-bold text-2xl group-hover:underline">${news.title}</h2>
-        <p class="text-neutral-500">${news.timestamp}</p>
+        <h2 class="font-bold text-2xl group-hover:underline">${news.title ?? ""}</h2>
+        <p class="text-neutral-500">${news.timestamp ?? ""}</p>
     `;
-    const contents = news.content;
+    const contents = news.content ?? [];
     contents.forEach(content => {
         newsDetail.innerHTML += `<p>${content}</p>`;
     });
