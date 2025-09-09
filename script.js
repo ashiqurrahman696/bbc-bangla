@@ -157,7 +157,7 @@ const handleBookMark = (e) => {
     const id = e.target.parentNode.id;
     let existingBookmark = bookmarks.find(bookmark => title === bookmark.title);
     if(existingBookmark){
-        alert("Already added to bookmark");
+        alert("এই খবরটি আগে থেকেই বুকমার্ক করা হয়েছে");
         return;
     }
     else{
