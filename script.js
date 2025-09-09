@@ -37,6 +37,7 @@ const showCategories = (categories) => {
     categoryList.innerHTML += `
         <li onclick="loadPopularNews()" id="popular" class="cursor-pointer py-3 hover:border-b-4 hover:border-red-500">সর্বাধিক পঠিত</li>
     `;
+    loadNewsByCategory('main');
 }
 
 const loadPopularNews = async() => {
@@ -189,4 +190,3 @@ const deleteBookmark = (id) => {
 }
 
 loadCategories();
-loadNewsByCategory('main');
