@@ -134,7 +134,9 @@ const loadNewsDetail = async(id) => {
 const showNewsDetail = (news) => {
     const newsModal = document.getElementById("news_modal");
     const newsDetail = document.getElementById("news-detail");
+    const modalBox = document.getElementById("modal-box");
     newsModal.showModal();
+    modalBox.scrollTop = 0;
     newsDetail.innerHTML = "";
     newsDetail.innerHTML += `
         ${news.images.length !== 0 ? `<img src="${news.images[0].url}" alt="" class="mx-auto">` : ''}
